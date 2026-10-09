@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthFlowLab", "AuthFlowLab\AuthFlowLab.csproj", "{73F8F20E-6DDC-497A-907D-AAD65B29006E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthFlowLab.API", "AuthFlowLab.API\AuthFlowLab.API.csproj", "{E89F1E27-2F55-47E8-9D13-AC183ED73619}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthFlowLab.WebUI", "AuthFlowLab.WebUI\AuthFlowLab.WebUI.csproj", "{10EFF89D-6071-4268-A87A-5E27B7044168}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -8,9 +10,13 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{73F8F20E-6DDC-497A-907D-AAD65B29006E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{73F8F20E-6DDC-497A-907D-AAD65B29006E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{73F8F20E-6DDC-497A-907D-AAD65B29006E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{73F8F20E-6DDC-497A-907D-AAD65B29006E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E89F1E27-2F55-47E8-9D13-AC183ED73619}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E89F1E27-2F55-47E8-9D13-AC183ED73619}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E89F1E27-2F55-47E8-9D13-AC183ED73619}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E89F1E27-2F55-47E8-9D13-AC183ED73619}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10EFF89D-6071-4268-A87A-5E27B7044168}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10EFF89D-6071-4268-A87A-5E27B7044168}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10EFF89D-6071-4268-A87A-5E27B7044168}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10EFF89D-6071-4268-A87A-5E27B7044168}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

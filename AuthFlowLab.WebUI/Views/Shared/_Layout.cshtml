@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] · AuthFlowLab</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header class="site-header">
+        <nav class="container navigation" aria-label="Ana menü">
+            <a class="brand" asp-controller="Home" asp-action="Index">
+                <span class="brand-icon" aria-hidden="true">A</span>
+                <span>
+                    AuthFlowLab
+                    <span class="brand-caption">API + MVC</span>
+                </span>
+            </a>
+
+            <div class="nav-links">
+                <a asp-controller="Home" asp-action="Index">Ana sayfa</a>
+
+                @if (User.Identity?.IsAuthenticated == true)
+                {
+                    <a asp-controller="User" asp-action="Index">Kullanıcılar</a>
+                    <span class="signed-in-name">@User.Identity.Name</span>
+
+                    <form asp-controller="Account" asp-action="Logout" method="post">
+                        <button class="button button-secondary button-small" type="submit">
+                            Çıkış yap
+                        </button>
+                    </form>
+                }
+                else
+                {
+                    <a asp-controller="Account" asp-action="Login">Giriş yap</a>
+                    <a class="button button-primary button-small"
+                       asp-controller="Account"
+                       asp-action="Register">
+                        Kayıt ol
+                    </a>
+                }
+            </div>
+        </nav>
+    </header>
+
+    <main class="container main-content" id="main">
+        @RenderBody()
+    </main>
+
+    <footer class="site-footer container">
+        <span>AuthFlowLab · Kimlik doğrulama çalışma alanı</span>
+        <span>Identity / JWT / Cookie</span>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

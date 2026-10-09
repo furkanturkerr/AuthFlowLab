@@ -1,0 +1,80 @@
+@model LoginDto
+
+@{
+    ViewData["Title"] = "Giriş yap";
+}
+
+<section class="auth-page">
+    <div class="auth-intro">
+        <p class="eyebrow">02 / LOGIN</p>
+        <h1>Tekrar<br />hoş geldin.</h1>
+        <p>Hesabına giriş yaparak korumalı kullanıcı listesini açabilirsin.</p>
+
+        <a class="text-link" asp-controller="Home" asp-action="Index">
+            ← Ana sayfaya dön
+        </a>
+    </div>
+
+    <div class="panel auth-card">
+        <span class="badge">Cookie + JWT</span>
+        <h2>Hesabına giriş yap</h2>
+        <p class="card-description">Kayıt olurken kullandığın e-posta ve şifreyi gir.</p>
+
+        @if (TempData["SuccessMessage"] is string success)
+        {
+            <div class="notice notice-success" role="status">@success</div>
+        }
+
+        @if (TempData["SessionMessage"] is string sessionMessage)
+        {
+            <div class="notice" role="status">@sessionMessage</div>
+        }
+
+        <form asp-controller="Account" asp-action="Login" method="post">
+            <input type="hidden" name="returnUrl" value="@ViewData["ReturnUrl"]" />
+
+            <div asp-validation-summary="ModelOnly"
+                 class="validation-summary"
+                 role="alert">
+            </div>
+
+            <div class="field">
+                <label asp-for="Email">E-posta adresi</label>
+                <input asp-for="Email"
+                       type="email"
+                       autocomplete="username"
+                       placeholder="ornek@email.com" />
+                <span asp-validation-for="Email" class="field-error"></span>
+            </div>
+
+            <div class="field">
+                <label asp-for="Password">Şifre</label>
+                <input asp-for="Password"
+                       type="password"
+                       autocomplete="current-password"
+                       placeholder="Şifreni gir" />
+                <span asp-validation-for="Password" class="field-error"></span>
+            </div>
+
+            <label class="checkbox-label">
+                <input asp-for="RememberMe" />
+                Beni hatırla
+            </label>
+
+            <button class="button button-primary button-full" type="submit">
+                Giriş yap
+                <span aria-hidden="true">→</span>
+            </button>
+        </form>
+
+        <p class="auth-switch">
+            Henüz hesabın yok mu?
+            <a asp-controller="Account" asp-action="Register">Kayıt ol</a>
+        </p>
+    </div>
+</section>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

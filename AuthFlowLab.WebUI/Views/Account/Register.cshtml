@@ -1,0 +1,85 @@
+@model RegisterDto
+
+@{
+    ViewData["Title"] = "Kayıt ol";
+}
+
+<section class="auth-page">
+    <div class="auth-intro">
+        <p class="eyebrow">01 / REGISTER</p>
+        <h1>İlk hesabını<br />oluştur.</h1>
+        <p>
+            Kayıt işlemi API'deki Identity sistemi üzerinden yapılır.
+            Kullanıcı rolü API tarafından atanır.
+        </p>
+
+        <a class="text-link" asp-controller="Home" asp-action="Index">
+            ← Ana sayfaya dön
+        </a>
+    </div>
+
+    <div class="panel auth-card">
+        <span class="badge">ASP.NET Core Identity</span>
+        <h2>Hesap oluştur</h2>
+        <p class="card-description">
+            Şifren en az 6 karakter; büyük ve küçük harf, rakam ve özel karakter içermeli.
+        </p>
+
+        <form asp-controller="Account" asp-action="Register" method="post">
+            <div asp-validation-summary="ModelOnly"
+                 class="validation-summary"
+                 role="alert">
+            </div>
+
+            <div class="field">
+                <label asp-for="NameSurname">Ad soyad</label>
+                <input asp-for="NameSurname"
+                       autocomplete="name"
+                       placeholder="Adın ve soyadın" />
+                <span asp-validation-for="NameSurname" class="field-error"></span>
+            </div>
+
+            <div class="field">
+                <label asp-for="Email">E-posta adresi</label>
+                <input asp-for="Email"
+                       type="email"
+                       autocomplete="username"
+                       placeholder="ornek@email.com" />
+                <span asp-validation-for="Email" class="field-error"></span>
+            </div>
+
+            <div class="field">
+                <label asp-for="Password">Şifre</label>
+                <input asp-for="Password"
+                       type="password"
+                       autocomplete="new-password"
+                       placeholder="Güçlü bir şifre oluştur" />
+                <span asp-validation-for="Password" class="field-error"></span>
+            </div>
+
+            <div class="field">
+                <label asp-for="ConfirmPassword">Şifre tekrarı</label>
+                <input asp-for="ConfirmPassword"
+                       type="password"
+                       autocomplete="new-password"
+                       placeholder="Şifreni tekrar gir" />
+                <span asp-validation-for="ConfirmPassword" class="field-error"></span>
+            </div>
+
+            <button class="button button-primary button-full" type="submit">
+                Hesap oluştur
+                <span aria-hidden="true">→</span>
+            </button>
+        </form>
+
+        <p class="auth-switch">
+            Zaten hesabın var mı?
+            <a asp-controller="Account" asp-action="Login">Giriş yap</a>
+        </p>
+    </div>
+</section>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

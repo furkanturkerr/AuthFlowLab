@@ -1,0 +1,33 @@
+@AuthFlowLab.API_HostAddress = http://localhost:5129
+@email = example@example.com
+@password = ChangeMe!12345
+@accessToken = paste-your-access-token-here
+
+### Register: test bilgilerini kendi değerlerinle değiştir.
+POST {{AuthFlowLab.API_HostAddress}}/api/auth/register
+Content-Type: application/json
+
+{
+  "nameSurname": "Test User",
+  "email": "{{email}}",
+  "password": "{{password}}",
+  "confirmPassword": "{{password}}"
+}
+
+### Login: cevaptaki accessToken değerini yukarıdaki değişkene kopyala.
+POST {{AuthFlowLab.API_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "{{email}}",
+  "password": "{{password}}"
+}
+
+### Tokensız kullanıcı listesi: 401 beklenir.
+GET {{AuthFlowLab.API_HostAddress}}/api/users
+Accept: application/json
+
+### Geçerli token ile kullanıcı listesi: 200 beklenir.
+GET {{AuthFlowLab.API_HostAddress}}/api/users
+Authorization: Bearer {{accessToken}}
+Accept: application/json

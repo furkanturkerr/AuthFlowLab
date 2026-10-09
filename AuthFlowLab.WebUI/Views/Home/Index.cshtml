@@ -1,0 +1,106 @@
+@{
+    ViewData["Title"] = "Ana sayfa";
+    var signedIn = User.Identity?.IsAuthenticated == true;
+}
+
+<section class="hero">
+    <div>
+        <p class="eyebrow">KİMLİK DOĞRULAMA LABORATUVARI</p>
+        <h1>Giriş akışını<br />uçtan uca dene.</h1>
+
+        <p class="hero-description">
+            Kayıt ol, giriş yap ve korumalı kullanıcı listesine eriş.
+            API JWT ile, MVC sayfaları cookie ile kullanıcıyı doğrular.
+        </p>
+
+        <div class="actions">
+            @if (signedIn)
+            {
+                <a class="button button-primary"
+                   asp-controller="User"
+                   asp-action="Index">
+                    Kullanıcı listesini aç
+                    <span aria-hidden="true">→</span>
+                </a>
+            }
+            else
+            {
+                <a class="button button-primary"
+                   asp-controller="Account"
+                   asp-action="Register">
+                    Hesap oluştur
+                    <span aria-hidden="true">→</span>
+                </a>
+
+                <a class="button button-secondary"
+                   asp-controller="Account"
+                   asp-action="Login">
+                    Giriş yap
+                </a>
+            }
+        </div>
+    </div>
+
+    <aside class="panel flow-panel">
+        <p class="eyebrow">OTURUM DURUMU</p>
+
+        @if (signedIn)
+        {
+            <span class="badge badge-success">Giriş yapıldı</span>
+            <h2>@User.Identity!.Name</h2>
+            <p>Kullanıcı listesi için API'ye JWT içeren bir istek gönderebilirsin.</p>
+        }
+        else
+        {
+            <span class="badge">Giriş yapılmadı</span>
+            <h2>Korumalı sayfa hazır.</h2>
+            <p>Kullanıcı listesini açmayı denersen önce giriş sayfasına yönlendirilirsin.</p>
+        }
+
+        <div class="flow-step">
+            <span>01</span>
+            <div>
+                <strong>Tarayıcı → MVC</strong>
+                <p>Authentication cookie</p>
+            </div>
+        </div>
+
+        <div class="flow-step">
+            <span>02</span>
+            <div>
+                <strong>MVC → API</strong>
+                <p>Authorization: Bearer JWT</p>
+            </div>
+        </div>
+
+        <a class="text-link" asp-controller="User" asp-action="Index">
+            Kullanıcı listesine git →
+        </a>
+    </aside>
+</section>
+
+<section class="feature-grid" aria-label="Test adımları">
+    <article class="panel">
+        <span class="step-number">01 / REGISTER</span>
+        <h2>Hesap oluştur</h2>
+        <p>
+            Identity kullanıcıyı kaydeder.
+            Şifre kuralları ve e-posta kontrolü API tarafından uygulanır.
+        </p>
+    </article>
+
+    <article class="panel">
+        <span class="step-number">02 / LOGIN</span>
+        <h2>Oturum aç</h2>
+        <p>
+            API'den JWT alınır.
+            MVC kullanıcı claim'leri ve token ile authentication cookie oluşturur.
+        </p>
+    </article>
+
+    <article class="panel">
+        <span class="step-number">03 / AUTHORIZE</span>
+        <h2>Listeye eriş</h2>
+        <p>Giriş zorunluluğu hem MVC controller'da hem API endpoint'inde kontrol edilir.</p>
+    </article>
+</section>

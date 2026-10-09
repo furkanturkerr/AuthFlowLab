@@ -1,0 +1,13 @@
+@{
+    ViewData["Title"] = "Erişim reddedildi";
+}
+
+<section class="panel message-panel">
+    <span class="badge badge-warning">403 · YETKİ YOK</span>
+    <h1>Bu sayfaya erişim iznin yok.</h1>
+    <p>Oturumun açık olsa da bu işlem için gerekli yetkiye sahip değilsin.</p>
+
+    <a class="button button-primary" asp-controller="Home" asp-action="Index">
+        Ana sayfaya dön
+    </a>
+</section>

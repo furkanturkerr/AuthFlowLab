@@ -3,3 +3,16 @@ obj/
 /packages/
 riderModule.iml
 /_ReSharper.Caches/
+
+# Local API configuration and secrets
+/AuthFlowLab.API/appsettings*.json
+!/AuthFlowLab.API/appsettings.example.json
+
+# IDE and local machine files
+.idea/
+.vs/
+.vscode/
+.DS_Store
+*.user
+*.suo
+*.DotSettings.user
